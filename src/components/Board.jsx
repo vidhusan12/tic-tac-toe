@@ -38,7 +38,7 @@ const Board = () => {
     for (let line of lines) {
       const [a, b, c] = line;
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-        return squares[a]
+        return { winner: squares[a], line: [a, b, c] }
       }
     }
     return null;
@@ -48,7 +48,7 @@ const Board = () => {
 
   let status;
   if (winner) {
-    status = "Winner: " + winner;
+    status = "Winner: " + winner.winner;
   } else if (squares.every((square) => square !== null)) {
     status = "It's a draw"
 
@@ -72,7 +72,9 @@ const Board = () => {
               key={index}
               value={value}
               onClick={() => handleSquareClick(index)}
+              highlight={winner?.line?.includes(index)}
             />
+
           )
         }
       </div>

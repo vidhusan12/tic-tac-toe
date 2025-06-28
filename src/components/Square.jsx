@@ -2,10 +2,10 @@
 import React from 'react'
 import '../App.css'
 
-const Square = ({ value, onClick }) => {
+const Square = ({ value, onClick, highlight }) => {
   return (
     <>
-      <button className='square-button' onClick={onClick}>
+      <button className={highlight ? "square highlight" : "square"} onClick={onClick}>
         {value}
       </button>
 
