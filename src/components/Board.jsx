@@ -44,12 +44,18 @@ const Board = () => {
     return null;
   }
 
+
+
   let status;
   if (winner) {
     status = "Winner: " + winner;
+  } else if (squares.every((square) => square !== null)) {
+    status = "It's a draw"
+
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
+
 
   function handleRestart() {
     setSquares(Array(9).fill(null))
