@@ -16,7 +16,25 @@
 }
 
 .square.highlight {
-  background: yellow;
+  background: gold;
   color: red;
   font-weight: bold;
+  border: 2px solid red;
+  animation: winnerPlus 0.7s ease-in-out 2;
+}
+
+@keyframes winnerPluse {
+  0% {box-shadow: 0 0 0px gold;}
+  50% {box-shadow: 0 0 18px 4px gold;}
+  100% {box-shadow: 0 0 0px gold;}
+}
+
+.square.clicked {
+  animation: clickPop 0.2s;
+}
+
+@keyframes clickPop {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.15);}
+  100% {transform: scale(1);}
 }

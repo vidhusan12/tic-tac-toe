@@ -7,6 +7,8 @@ const Board = () => {
 
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
+  const [xScore, setXScore] = useState(0);
+  const [oScore, setOScore] = useState(0);
   const winner = calculateWinner(squares);
 
   function handleSquareClick(index) {
@@ -60,11 +62,17 @@ const Board = () => {
   function handleRestart() {
     setSquares(Array(9).fill(null))
     setXIsNext(true)
+
+    if(winner){
+      if(winner.winner === "X") setXScore(xScore + 1);
+      if(winner.winner === "O") setOScore(oScore + 1);
+    }
   }
 
   return (
     <>
       <div className='status'>{status}</div>
+      <div>X: {xScore} | O: {oScore}</div>
       <div className='board'>
         {
           squares.map((value, index) =>
