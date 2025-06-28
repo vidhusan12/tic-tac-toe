@@ -1,0 +1,12 @@
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 2px solid red;
+  width: 50vh;
+  height: 50vh;
+}
+
+.square-button {
+  border: 1px solid ;
+  
+}
