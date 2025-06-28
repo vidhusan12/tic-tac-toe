@@ -10,7 +10,7 @@ const Board = () => {
   const winner = calculateWinner(squares);
 
   function handleSquareClick(index) {
-    if(winner || squares[index]) return;
+    if (winner || squares[index]) return;
     const newSquares = squares.slice()
     if (newSquares[index]) return; // if the sqaure is already filled do nothing
     if (xIsNext === true) {
@@ -51,6 +51,11 @@ const Board = () => {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
 
+  function handleRestart() {
+    setSquares(Array(9).fill(null))
+    setXIsNext(true)
+  }
+
   return (
     <>
       <div className='status'>{status}</div>
@@ -65,6 +70,7 @@ const Board = () => {
           )
         }
       </div>
+      <button className='restart' onClick={() => handleRestart()}>Play Again</button>
     </>
   )
 }
