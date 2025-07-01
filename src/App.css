@@ -1,32 +1,122 @@
+body {
+  background: #f7f7f7;
+  font-family: "Segoe UI", Arial, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  color: black;
+  letter-spacing: 0.8px;
+  font-weight: 800;
+  font-size: 4rem;
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border: 2px solid red;
-  width: 50vh;
-  height: 50vh;
+  gap: 2vw;
+  background: #fff;
+  padding: 1.5vw;
+  border-radius: 2vw;
+  box-shadow: 0 6px 32px rgba(0, 0, 0, 0.12);
+  margin-bottom: 3vw;
+  max-width: 90vw;
+  width: 100%;
+}
+
+.status {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 12px;
+  color: #474747;
+  letter-spacing: 0.5px;
+}
+
+.restart {
+  background: #d7263d;
+  color: #fff;
+  padding: 12px 26px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.09);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.restart:hover {
+  background: #a61c24;
+  transform: scale(1.05);
+}
+
+.scoreboard {
+  display: flex;
+  color: #222;
+  gap: 18px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.score-x {
+  color: #2563eb;
+}
+.score-o {
+  color: #d7263d;
 }
 
 .square {
-  border: 2px solid #222;
-  background: #fff;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  background: #f0f0f0;
+  border: 2px solid #dedede;
+  border-radius: 1vw;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: 600;
   color: #222;
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.1s;
   cursor: pointer;
-  
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+ 
+}
+
+.square:hover {
+  background: #e0e7ff;
+  transform: scale(1.07);
 }
 
 .square.highlight {
-  background: gold;
-  color: red;
-  font-weight: bold;
-  border: 2px solid red;
-  animation: winnerPlus 0.7s ease-in-out 2;
+  background: #ffe066;
+  color: #d7263d;
+  border-color: #ffe066;
+  transform: scale(1.07);
+  animation: winnerPulse 0.7s ease-in-out 2;
 }
 
-@keyframes winnerPluse {
-  0% {box-shadow: 0 0 0px gold;}
-  50% {box-shadow: 0 0 18px 4px gold;}
-  100% {box-shadow: 0 0 0px gold;}
+@keyframes winnerPulse {
+  0% {
+    box-shadow: 0 0 0px gold;
+  }
+  50% {
+    box-shadow: 0 0 18px 4px gold;
+  }
+  100% {
+    box-shadow: 0 0 0px gold;
+  }
 }
 
 .square.clicked {
@@ -34,7 +124,13 @@
 }
 
 @keyframes clickPop {
-  0% {transform: scale(1);}
-  50% {transform: scale(1.15);}
-  100% {transform: scale(1);}
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

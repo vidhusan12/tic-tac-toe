@@ -63,30 +63,33 @@ const Board = () => {
     setSquares(Array(9).fill(null))
     setXIsNext(true)
 
-    if(winner){
-      if(winner.winner === "X") setXScore(xScore + 1);
-      if(winner.winner === "O") setOScore(oScore + 1);
+    if (winner) {
+      if (winner.winner === "X") setXScore(xScore + 1);
+      if (winner.winner === "O") setOScore(oScore + 1);
     }
   }
 
   return (
     <>
-      <div className='status'>{status}</div>
-      <div>X: {xScore} | O: {oScore}</div>
-      <div className='board'>
-        {
-          squares.map((value, index) =>
-            <Square
-              key={index}
-              value={value}
-              onClick={() => handleSquareClick(index)}
-              highlight={winner?.line?.includes(index)}
-            />
+      <div className='app-container'>
+        <h1 className='title'>Tic Tac Toe</h1>
+        <div className='status'>{status}</div>
+        <div className='scoreboard'>X: {xScore} | O: {oScore}</div>
+        <div className='board'>
+          {
+            squares.map((value, index) =>
+              <Square
+                key={index}
+                value={value}
+                onClick={() => handleSquareClick(index)}
+                highlight={winner?.line?.includes(index)}
+              />
 
-          )
-        }
+            )
+          }
+        </div>
+        <button className='restart' onClick={() => handleRestart()}>Play Again</button>
       </div>
-      <button className='restart' onClick={() => handleRestart()}>Play Again</button>
     </>
   )
 }
